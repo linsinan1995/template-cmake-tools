@@ -3,8 +3,8 @@
 using std::cout;
 using std::endl;
 
-void
-encode() 
+int
+encode(int a) 
 {
-    cout << "Hello world" << endl;
+    return a;
 }

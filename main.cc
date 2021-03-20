@@ -1,6 +1,7 @@
+#include <opencv2/opencv.hpp>
 #include "encoder.h"
 
 int main()
 {
-    encode();
+    return encode(54);
 }

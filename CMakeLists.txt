@@ -24,6 +24,23 @@ find_package(PkgConfig)
 pkg_check_modules(GST REQUIRED gstreamer-1.0>=1.15)
 pkg_check_modules(OpenCV REQUIRED opencv>=4.4)
 pkg_check_modules(ffmpeg REQUIRED libavcodec>=55.0.0 libavutil>=56.0.0 libswresample>=3.0.0)
+pkg_check_modules(LIBAV REQUIRED IMPORTED_TARGET
+    libavdevice
+    libavfilter
+    libavformat
+    libavcodec
+    libswresample
+    libswscale
+    libavutil
+)
+
+include_directories(${GST_INCLUDE_DIRS})
+link_libraries(${GST_LIBRARIES})
+
+include_directories(${OpenCV_INCLUDE_DIRS})
+link_libraries(${OpenCV_LIBS})
+
+link_libraries(PkgConfig::LIBAV)
 
 # Function to prepend the subdirectory to source files in subdirectories
 FUNCTION(PREPEND var )
@@ -43,10 +60,9 @@ if (BUILD_TESTING)
     add_subdirectory(tests)
 endif()
 
-add_executable(${PROJECT_NAME} main.cc ${impl_SRC} ${impl_INC})
+add_executable(${PROJECT_NAME} main.cc ${impl_src} ${impl_inc})
 
 target_link_libraries(
     ${PROJECT_NAME}
-    encoderImpl
-    ${GST_LIBRARY_DIRS} 
+    Impl
 )

@@ -1,11 +1,11 @@
 
 file(GLOB INC_SOURCES RELATIVE ${CMAKE_SOURCE_DIR}/include ./*.hpp)
 
-set(imageEncoder_INC
+set(impl_inc
     ${INC_SOURCES}
 )
 
 # Form the full path to the source files...
-PREPEND(imageEncoder_INC)
+PREPEND(impl_inc)
 # ... and pass the variable to the parent scope.
-set(imageEncoder_INC ${imageEncoder_INC}  PARENT_SCOPE)
+set(impl_inc ${impl_inc}  PARENT_SCOPE)

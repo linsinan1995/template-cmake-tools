@@ -3,6 +3,6 @@
 
 #include <iostream>
 
-void encode();
+int encode(int a);
 
 #endif // ENCODER_HPP

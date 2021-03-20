@@ -5,13 +5,13 @@ set(CMAKE_CXX_STANDARD 17)
 
 file(GLOB SOURCES RELATIVE ${CMAKE_SOURCE_DIR}/src ./*.cpp ./*.c ./*.cc)
 
-set(imageEncoder_SRC
+set(impl_src
     ${SOURCES}
     )
 
 # Form the full path to the source files...
-PREPEND(imageEncoder_SRC)
+PREPEND(impl_src)
 # ... and pass the variable to the parent scope.
-set(imageEncoder_SRC ${imageEncoder_SRC}  PARENT_SCOPE)
+set(impl_src ${impl_src}  PARENT_SCOPE)
 
-add_library(encoderImpl ${imageEncoder_SRC})
+add_library(Impl ${impl_src})
